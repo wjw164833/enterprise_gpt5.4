@@ -28,8 +28,9 @@ enterprise/
 ├── invitation-enterprise/      # Java 后端工程（Spring Boot 多模块）
 ├── invitation-frontend/        # 管理后台前端（Vue 3 + Vite）
 └── invitation-miniprogram/     # 微信小程序端
+```
+
 子项目说明
-invitation-enterprise
 # invitation-enterprise
 
 ## 简介

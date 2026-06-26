@@ -1,0 +1,56 @@
+<view class="page-seat">
+  <!-- 席位图 -->
+  <seat-map tables="{{tables}}" editable="{{true}}" bind:seattap="onSeatTap" />
+
+  <!-- 添加餐桌 -->
+  <view class="add-table-btn card" bindtap="onShowAddTable">
+    <text class="add-icon">+</text>
+    <text class="add-text">添加餐桌</text>
+  </view>
+
+  <!-- 分配弹窗 -->
+  <view class="modal-mask" wx:if="{{showAssignModal}}" catchtap="onCancelAssign">
+    <view class="modal-content animate-slideUp" catchtap="preventTap">
+      <view class="modal-header">
+        <text class="modal-title">分配座位</text>
+        <text class="modal-close" catchtap="onCancelAssign">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="form-group">
+          <text class="form-label">座位号</text>
+          <input class="form-input" value="{{assignSeatNo}}" disabled />
+        </view>
+        <view class="form-group">
+          <text class="form-label form-label-required">宾客姓名</text>
+          <input class="form-input" placeholder="输入宾客姓名" value="{{assignGuestName}}" bindinput="onAssignInput" />
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="btn-primary btn-block" bindtap="onSubmitAssign">确认分配</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 新增餐桌弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddTableModal}}" catchtap="onShowAddTable">
+    <view class="modal-content animate-slideUp" catchtap="preventTap">
+      <view class="modal-header">
+        <text class="modal-title">添加餐桌</text>
+        <text class="modal-close" catchtap="onShowAddTable">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="form-group">
+          <text class="form-label form-label-required">餐桌名称</text>
+          <input class="form-input" placeholder="如：主桌、亲友桌" value="{{newTableName}}" bindinput="onTableNameInput" />
+        </view>
+        <view class="form-group">
+          <text class="form-label">座位数</text>
+          <input class="form-input" type="number" placeholder="默认10" value="{{newTableCapacity}}" bindinput="onTableCapacityInput" />
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="btn-primary btn-block" bindtap="onSubmitAddTable">添加</button>
+      </view>
+    </view>
+  </view>
+</view>

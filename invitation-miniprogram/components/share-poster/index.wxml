@@ -1,0 +1,33 @@
+<view class="poster-overlay" wx:if="{{show}}" catchtap="onClose">
+  <view class="poster-container" catchtap="preventTap">
+    <!-- 关闭按钮 -->
+    <view class="poster-close" catchtap="onClose">
+      <text>×</text>
+    </view>
+
+    <!-- 标题 -->
+    <view class="poster-title">分享海报</view>
+
+    <!-- 海报预览 -->
+    <view class="poster-preview">
+      <canvas type="2d" id="posterCanvas" class="poster-canvas"></canvas>
+      <image
+        wx:if="{{posterPath}}"
+        class="poster-image"
+        src="{{posterPath}}"
+        mode="widthFix"
+        bindtap="onPreview"
+      />
+      <view wx:if="{{isGenerating}}" class="poster-loading">
+        <text>海报生成中...</text>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="poster-actions">
+      <button class="btn-primary btn-block" bindtap="onSaveToAlbum" disabled="{{!posterPath}}">
+        保存到相册
+      </button>
+    </view>
+  </view>
+</view>

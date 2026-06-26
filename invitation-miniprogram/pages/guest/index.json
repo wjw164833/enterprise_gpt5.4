@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "music-player": "/components/music-player/index",
+    "bless-card": "/components/bless-card/index"
+  }
+}

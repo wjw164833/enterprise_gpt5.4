@@ -1,0 +1,143 @@
+<view class="page-detail">
+  <!-- 骨架屏 -->
+  <view wx:if="{{loading}}" class="skeleton-wrapper">
+    <view class="skeleton skeleton-image" style="height:400rpx"></view>
+    <view class="skeleton skeleton-title" style="width:50%"></view>
+    <view class="skeleton skeleton-text" style="width:80%"></view>
+  </view>
+
+  <view wx:elif="{{detail}}">
+    <!-- 封面 -->
+    <view class="detail-cover">
+      <image src="{{detail.coverImage || '/static/images/default-cover.png'}}" mode="aspectFill" />
+      <view class="cover-overlay">
+        <view class="status-tag {{detail.statusClass}}">{{detail.statusText}}</view>
+        <view class="cover-type">{{detail.activityTypeName}}</view>
+      </view>
+    </view>
+
+    <!-- 标题信息 -->
+    <view class="detail-info card">
+      <text class="detail-title">{{detail.title}}</text>
+      <view class="detail-meta">
+        <view class="meta-item" wx:if="{{detail.activityDate}}">
+          <text class="meta-icon">📅</text>
+          <text class="meta-text">{{detail.formattedDate}}</text>
+        </view>
+        <view class="meta-item" wx:if="{{detail.activityAddress}}" bindtap="onNavigateTap">
+          <text class="meta-icon">📍</text>
+          <text class="meta-text">{{detail.activityAddress}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 统计卡片 -->
+    <view class="stats-section" wx:if="{{stats}}">
+      <view class="stats-grid">
+        <view class="stat-card">
+          <text class="stat-value">{{stats.pv || 0}}</text>
+          <text class="stat-label">浏览量</text>
+        </view>
+        <view class="stat-card">
+          <text class="stat-value">{{stats.replyCount || 0}}</text>
+          <text class="stat-label">回复数</text>
+        </view>
+        <view class="stat-card">
+          <text class="stat-value">{{stats.attendCount || 0}}</text>
+          <text class="stat-label">出席数</text>
+        </view>
+        <view class="stat-card">
+          <text class="stat-value">{{stats.blessCount || 0}}</text>
+          <text class="stat-label">祝福数</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 邀请语 -->
+    <view class="card" wx:if="{{detail.aiGreeting}}">
+      <view class="card-title">邀请语</view>
+      <text class="greeting-text">{{detail.aiGreeting}}</text>
+    </view>
+
+    <!-- 快捷功能入口 -->
+    <view class="quick-actions card">
+      <view class="action-item" bindtap="onSeatTap">
+        <text class="action-emoji">🪑</text>
+        <text class="action-name">席位管理</text>
+      </view>
+      <view class="action-item" bindtap="onAnalyticsTap">
+        <text class="action-emoji">📊</text>
+        <text class="action-name">数据分析</text>
+      </view>
+      <view class="action-item" bindtap="onChatTap">
+        <text class="action-emoji">💬</text>
+        <text class="action-name">聊天室</text>
+      </view>
+      <view class="action-item" bindtap="onMoreAction">
+        <text class="action-emoji">⚙️</text>
+        <text class="action-name">更多</text>
+      </view>
+    </view>
+
+    <!-- 回复列表 -->
+    <view class="card">
+      <view class="card-title">宾客回复 ({{replies.length}})</view>
+      <view wx:if="{{replies.length === 0}}" class="empty-replies">
+        <text class="empty-text">暂无回复</text>
+      </view>
+      <view wx:else>
+        <view class="reply-item" wx:for="{{replies}}" wx:key="id">
+          <view class="reply-header">
+            <view class="avatar avatar-small">
+              <image src="/static/images/default-avatar.png" mode="aspectFill" />
+            </view>
+            <view class="reply-user">
+              <text class="reply-name">{{item.guestName}}</text>
+              <text class="reply-time">{{item.formattedTime}}</text>
+            </view>
+            <text class="reply-status {{item.replyStatusClass}}">{{item.replyStatusText}}</text>
+          </view>
+          <view class="reply-info" wx:if="{{item.guestCount > 1 || item.remark}}">
+            <text wx:if="{{item.guestCount > 1}}">出席{{item.guestCount}}人</text>
+            <text wx:if="{{item.remark}}" class="reply-remark">{{item.remark}}</text>
+          </view>
+        </view>
+        <view class="load-more" wx:if="{{replyHasMore}}" bindtap="onMoreReplies">
+          <text class="load-more-text">查看更多</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom" wx:if="{{detail}}">
+    <button class="btn-primary-plain" bindtap="onMoreAction">管理</button>
+    <button class="btn-primary" open-type="share">分享邀请函</button>
+  </view>
+
+  <!-- 操作面板 -->
+  <view class="action-sheet-mask" wx:if="{{showActionSheet}}" bindtap="onActionSheetClose">
+    <view class="action-sheet" catchtap="preventTap">
+      <view class="action-sheet-title">选择操作</view>
+      <view
+        class="action-sheet-item"
+        wx:for="{{actionList}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="onActionTap"
+      >
+        <text class="action-sheet-icon">{{item.icon}}</text>
+        <text class="action-sheet-name">{{item.name}}</text>
+      </view>
+      <view class="action-sheet-cancel" bindtap="onActionSheetClose">取消</view>
+    </view>
+  </view>
+
+  <!-- 海报组件 -->
+  <share-poster
+    show="{{showPoster}}"
+    invitation="{{detail}}"
+    qrcodeUrl="{{detail.qrcodeUrl}}"
+    bind:close="onPosterClose"
+  />
+</view>

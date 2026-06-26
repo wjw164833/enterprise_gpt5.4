@@ -1,0 +1,30 @@
+.page-list {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding-bottom: 120rpx;
+}
+
+.skeleton-wrapper {
+  padding: 24rpx 32rpx;
+}
+
+.skeleton-card {
+  background: #ffffff;
+  border-radius: var(--radius-medium);
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.list-content {
+  padding: 24rpx 32rpx;
+}
+
+.load-more {
+  text-align: center;
+  padding: 32rpx 0;
+}
+
+.load-more-text {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+}

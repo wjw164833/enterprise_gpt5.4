@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.invitation.model.mapper.ViewLogMapper">
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO view_log (invitation_id, visitor_id, ip_address, user_agent, referer, view_date, view_hour, source, created_at)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.invitationId}, #{item.visitorId}, #{item.ipAddress}, #{item.userAgent}, #{item.referer}, #{item.viewDate}, #{item.viewHour}, #{item.source}, #{item.createdAt})
+        </foreach>
+    </insert>
+    <select id="countPvByInvitationAndDate" resultType="int">
+        SELECT COUNT(*) FROM view_log WHERE invitation_id = #{invitationId} AND view_date = #{viewDate}
+    </select>
+</mapper>

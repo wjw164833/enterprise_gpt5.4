@@ -1,0 +1,175 @@
+.page-analytics {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: 24rpx 32rpx;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 24rpx 16rpx;
+}
+
+.stat-value {
+  font-size: 44rpx;
+  font-weight: 700;
+  display: block;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+  display: block;
+  margin-top: 8rpx;
+}
+
+.section {
+  margin-bottom: 24rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+/* 回复分布 */
+.reply-chart {
+  padding: 16rpx 0;
+}
+
+.bar-item {
+  margin-bottom: 20rpx;
+}
+
+.bar-fill {
+  height: 32rpx;
+  border-radius: var(--radius-small);
+  min-width: 4rpx;
+  transition: width 0.3s;
+}
+
+.bar-attend { background: var(--success-color); }
+.bar-uncertain { background: var(--warning-color); }
+.bar-decline { background: var(--error-color); }
+
+.bar-label {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-top: 4rpx;
+  display: block;
+}
+
+/* 时间维度 Tab */
+.time-tabs {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.time-tab {
+  padding: 8rpx 24rpx;
+  border-radius: var(--radius-round);
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+
+.time-tab-active {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+/* 趋势图 */
+.trend-chart {
+  padding: 16rpx 0;
+}
+
+.trend-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+  gap: 8rpx;
+}
+
+.trend-date {
+  width: 100rpx;
+  font-size: 20rpx;
+  color: var(--text-placeholder);
+  flex-shrink: 0;
+}
+
+.trend-bar-wrapper {
+  flex: 1;
+  height: 24rpx;
+  background: var(--bg-secondary);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.trend-bar {
+  height: 100%;
+  border-radius: 4rpx;
+  min-width: 2rpx;
+  position: relative;
+}
+
+.pv-bar { background: var(--primary-color); }
+.uv-bar { background: var(--info-color); }
+
+.trend-val {
+  position: absolute;
+  right: 4rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16rpx;
+  color: #ffffff;
+}
+
+.trend-legend {
+  display: flex;
+  gap: 32rpx;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.pv-dot { background: var(--primary-color); }
+.uv-dot { background: var(--info-color); }
+
+.trend-empty {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.trend-empty text {
+  font-size: 26rpx;
+  color: var(--text-placeholder);
+}

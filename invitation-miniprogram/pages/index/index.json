@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "邀请函",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "invitation-card": "/components/invitation-card/index"
+  }
+}

@@ -1,0 +1,85 @@
+<view class="page-analytics">
+  <!-- 统计概览 -->
+  <view class="stats-overview" wx:if="{{stats}}">
+    <view class="stats-grid">
+      <view class="stat-item card">
+        <text class="stat-value text-primary">{{stats.pv || 0}}</text>
+        <text class="stat-label">浏览量</text>
+      </view>
+      <view class="stat-item card">
+        <text class="stat-value" style="color:#10AEFF">{{stats.uv || 0}}</text>
+        <text class="stat-label">访客数</text>
+      </view>
+      <view class="stat-item card">
+        <text class="stat-value text-success">{{stats.replyCount || 0}}</text>
+        <text class="stat-label">回复数</text>
+      </view>
+      <view class="stat-item card">
+        <text class="stat-value text-warning">{{stats.attendCount || 0}}</text>
+        <text class="stat-label">出席数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 回复分布 -->
+  <view class="section card" wx:if="{{replyStats}}">
+    <text class="section-title">回复分布</text>
+    <view class="reply-chart">
+      <view class="chart-bar">
+        <view class="bar-item">
+          <view class="bar-fill bar-attend" style="width: {{replyStats.attendPercent || 0}}%"></view>
+          <text class="bar-label">出席 {{replyStats.attendCount || 0}} ({{replyStats.attendPercent || 0}}%)</text>
+        </view>
+        <view class="bar-item">
+          <view class="bar-fill bar-uncertain" style="width: {{replyStats.uncertainPercent || 0}}%"></view>
+          <text class="bar-label">不确定 {{replyStats.uncertainCount || 0}} ({{replyStats.uncertainPercent || 0}}%)</text>
+        </view>
+        <view class="bar-item">
+          <view class="bar-fill bar-decline" style="width: {{replyStats.declinePercent || 0}}%"></view>
+          <text class="bar-label">不出席 {{replyStats.declineCount || 0}} ({{replyStats.declinePercent || 0}}%)</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- PV/UV 趋势 -->
+  <view class="section card">
+    <view class="section-header">
+      <text class="section-title">浏览趋势</text>
+    </view>
+    <!-- 时间维度 Tab -->
+    <view class="time-tabs">
+      <view
+        class="time-tab {{currentTimeTab === index ? 'time-tab-active' : ''}}"
+        wx:for="{{timeTabs}}"
+        wx:key="key"
+        data-index="{{index}}"
+        bindtap="onTimeTabChange"
+      >{{item.name}}</view>
+    </view>
+
+    <!-- 趋势图（简化版柱状图） -->
+    <view class="trend-chart" wx:if="{{pvuvTrend.length > 0}}">
+      <view class="trend-row" wx:for="{{pvuvTrend}}" wx:key="date">
+        <text class="trend-date">{{item.dateStr}}</text>
+        <view class="trend-bar-wrapper">
+          <view class="trend-bar pv-bar" style="width: {{item.pvPercent}}%">
+            <text class="trend-val" wx:if="{{item.pv > 0}}">{{item.pv}}</text>
+          </view>
+        </view>
+        <view class="trend-bar-wrapper">
+          <view class="trend-bar uv-bar" style="width: {{item.uvPercent}}%">
+            <text class="trend-val" wx:if="{{item.uv > 0}}">{{item.uv}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="trend-legend">
+        <view class="legend-item"><view class="legend-dot pv-dot"></view><text>浏览量</text></view>
+        <view class="legend-item"><view class="legend-dot uv-dot"></view><text>访客数</text></view>
+      </view>
+    </view>
+    <view wx:else class="trend-empty">
+      <text>暂无数据</text>
+    </view>
+  </view>
+</view>

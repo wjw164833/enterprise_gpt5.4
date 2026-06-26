@@ -1,0 +1,55 @@
+<view class="page-step-content">
+  <!-- 步骤条 -->
+  <view class="step-bar">
+    <view class="step-item step-done"><text>1</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-done"><text>2</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-done"><text>3</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-active"><text>4</text></view>
+    <view class="step-line"></view>
+    <view class="step-item"><text>5</text></view>
+  </view>
+  <view class="step-labels">
+    <text class="step-label">类型</text>
+    <text class="step-label">模板</text>
+    <text class="step-label">表单</text>
+    <text class="step-label step-label-active">内容</text>
+    <text class="step-label">设置</text>
+  </view>
+
+  <view class="content-container">
+    <!-- 照片墙 -->
+    <view class="section-card card">
+      <view class="section-header">
+        <text class="section-title">照片墙</text>
+        <text class="section-count">{{photos.length}}/9</text>
+      </view>
+      <view class="photo-grid">
+        <view class="photo-item" wx:for="{{photos}}" wx:key="id">
+          <image src="{{item.url}}" mode="aspectFill" lazy-load
+            data-url="{{item.url}}" bindtap="onPreviewPhoto" />
+          <view class="photo-delete" data-index="{{index}}" catchtap="onDeleteDelete">×</view>
+        </view>
+        <view class="photo-add" wx:if="{{photos.length < 9}}" bindtap="onUploadPhotos">
+          <text class="photo-add-icon">+</text>
+          <text class="photo-add-text">{{photoUploading ? '上传中...' : '添加'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 视频链接 -->
+    <view class="section-card card">
+      <text class="section-title">视频链接</text>
+      <input class="form-input mt-16" placeholder="粘贴视频链接（选填）"
+        value="{{videoUrl}}" bindinput="onVideoInput" />
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom">
+    <button class="btn-secondary" bindtap="onPrev">上一步</button>
+    <button class="btn-primary" bindtap="onNext" style="flex:2">下一步</button>
+  </view>
+</view>

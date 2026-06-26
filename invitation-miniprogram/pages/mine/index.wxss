@@ -1,0 +1,114 @@
+.page-mine {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: 24rpx 32rpx;
+}
+
+/* 用户信息 */
+.user-section {
+  margin-bottom: 24rpx;
+}
+
+.user-card {
+  padding: 40rpx 32rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-detail {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.user-desc {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.user-edit-hint {
+  text-align: right;
+  margin-top: 16rpx;
+}
+
+.hint-text {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+}
+
+/* 菜单 */
+.menu-section {
+  padding: 0;
+  margin-bottom: 32rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 32rpx;
+  border-bottom: 1rpx solid var(--divider-color);
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.menu-name {
+  font-size: 30rpx;
+  color: var(--text-primary);
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-desc {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+  margin-right: 8rpx;
+}
+
+.menu-arrow {
+  font-size: 28rpx;
+  color: var(--text-placeholder);
+}
+
+/* 退出登录 */
+.logout-section {
+  margin-bottom: 32rpx;
+  padding: 0 32rpx;
+}
+
+/* 版本信息 */
+.version-info {
+  text-align: center;
+  padding: 32rpx 0;
+}
+
+.version-info text {
+  font-size: 24rpx;
+  color: var(--text-disabled);
+}

@@ -1,0 +1,259 @@
+.page-step-form {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: 24rpx 32rpx;
+  padding-bottom: 180rpx;
+}
+
+.step-bar, .step-labels {
+  /* 同 step-template 页面样式 */
+}
+
+.step-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 40rpx;
+}
+
+.step-item {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2rpx solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  color: var(--text-placeholder);
+}
+
+.step-active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.step-done {
+  background: var(--success-color);
+  border-color: var(--success-color);
+  color: #ffffff;
+}
+
+.step-line {
+  flex: 1;
+  height: 2rpx;
+  background: var(--border-color);
+  margin: 0 8rpx;
+}
+
+.step-line-done {
+  background: var(--success-color);
+}
+
+.step-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 40rpx 24rpx;
+}
+
+.step-label {
+  font-size: 20rpx;
+  color: var(--text-placeholder);
+  text-align: center;
+  flex: 1;
+}
+
+.step-label-active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.form-container {
+  background: #ffffff;
+  border-radius: var(--radius-medium);
+  padding: 32rpx;
+  box-shadow: var(--shadow-light);
+}
+
+/* 封面上传 */
+.cover-upload {
+  width: 100%;
+  height: 320rpx;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-secondary);
+}
+
+.cover-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-plus {
+  font-size: 64rpx;
+  color: var(--text-placeholder);
+  line-height: 1;
+}
+
+.cover-hint {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+  margin-top: 8rpx;
+}
+
+.cover-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-loading text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+/* 位置输入 */
+.location-input {
+  display: flex;
+  gap: 16rpx;
+}
+
+.location-btn {
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 0 24rpx;
+  border-radius: var(--radius-round);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* 选择器样式 */
+.form-input-picker {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-medium);
+  padding: 24rpx 28rpx;
+  font-size: 28rpx;
+}
+
+/* AI 按钮 */
+.ai-btn {
+  background: linear-gradient(135deg, #5856D6, #AF52DE);
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: var(--radius-round);
+}
+
+.ai-loading {
+  opacity: 0.6;
+}
+
+/* 音乐弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+}
+
+.modal-content {
+  width: 100%;
+  background: #ffffff;
+  border-radius: var(--radius-large) var(--radius-large) 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  max-height: 70vh;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+  border-bottom: 1rpx solid var(--divider-color);
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: var(--text-placeholder);
+}
+
+.music-list {
+  max-height: 60vh;
+  padding: 16rpx 0;
+}
+
+.music-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 32rpx;
+}
+
+.music-selected {
+  background: #FFF8F7;
+}
+
+.music-info {
+  flex: 1;
+}
+
+.music-name {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  display: block;
+}
+
+.music-artist {
+  font-size: 22rpx;
+  color: var(--text-placeholder);
+  display: block;
+  margin-top: 4rpx;
+}
+
+.music-check {
+  color: var(--primary-color);
+  font-size: 28rpx;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 24rpx;
+  padding: 20rpx 32rpx;
+  background: #ffffff;
+  box-shadow: 0 -2rpx 16rpx rgba(0, 0, 0, 0.06);
+  z-index: 100;
+}

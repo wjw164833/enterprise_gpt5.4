@@ -1,0 +1,101 @@
+<view class="page-step-settings">
+  <!-- 步骤条 -->
+  <view class="step-bar">
+    <view class="step-item step-done"><text>1</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-done"><text>2</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-done"><text>3</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-done"><text>4</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-active"><text>5</text></view>
+  </view>
+  <view class="step-labels">
+    <text class="step-label">类型</text>
+    <text class="step-label">模板</text>
+    <text class="step-label">表单</text>
+    <text class="step-label">内容</text>
+    <text class="step-label step-label-active">设置</text>
+  </view>
+
+  <view class="settings-container">
+    <!-- 回复截止时间 -->
+    <view class="setting-card card">
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-name">回复截止时间</text>
+          <text class="setting-desc">截止后宾客无法再回复</text>
+        </view>
+        <view class="setting-right">
+          <picker mode="date" value="{{settings.replyDeadline}}" bindchange="onDeadlineChange">
+            <text class="setting-value {{settings.replyDeadline ? '' : 'text-placeholder'}}">
+              {{settings.replyDeadline || '选择日期'}}
+            </text>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <!-- 出席设置 -->
+    <view class="setting-card card">
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-name">允许携带同伴</text>
+          <text class="setting-desc">宾客回复时可填写出席人数</text>
+        </view>
+        <switch checked="{{settings.allowCompanion}}" data-field="allowCompanion" bindchange="onSwitchChange" color="#E8534A" />
+      </view>
+
+      <view class="divider"></view>
+
+      <view class="setting-item" wx:if="{{settings.allowCompanion}}">
+        <view class="setting-left">
+          <text class="setting-name">人数上限</text>
+          <text class="setting-desc">每位宾客最多携带人数</text>
+        </view>
+        <input class="setting-input" type="number" value="{{settings.maxGuestCount}}"
+          bindinput="onMaxGuestInput" maxlength="2" />
+      </view>
+    </view>
+
+    <!-- 留言设置 -->
+    <view class="setting-card card">
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-name">公开留言</text>
+          <text class="setting-desc">宾客可查看和发表祝福留言</text>
+        </view>
+        <switch checked="{{settings.publicBless}}" data-field="publicBless" bindchange="onSwitchChange" color="#E8534A" />
+      </view>
+    </view>
+
+    <!-- 席位设置 -->
+    <view class="setting-card card">
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-name">启用席位管理</text>
+          <text class="setting-desc">为宾客分配座位</text>
+        </view>
+        <switch checked="{{settings.enableSeat}}" data-field="enableSeat" bindchange="onSwitchChange" color="#E8534A" />
+      </view>
+    </view>
+
+    <!-- 水印设置 -->
+    <view class="setting-card card">
+      <view class="setting-item">
+        <view class="setting-left">
+          <text class="setting-name">显示水印</text>
+          <text class="setting-desc">在邀请函上显示平台水印</text>
+        </view>
+        <switch checked="{{settings.watermark}}" data-field="watermark" bindchange="onSwitchChange" color="#E8534A" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom">
+    <button class="btn-secondary" bindtap="onPrev">上一步</button>
+    <button class="btn-primary" bindtap="onNext" style="flex:2">预览</button>
+  </view>
+</view>

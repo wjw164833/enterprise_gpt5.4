@@ -1,0 +1,58 @@
+<view class="invitation-card card" hover-class="card-hover" bindtap="onTap">
+  <!-- 封面区域 -->
+  <view class="card-cover" bindtap="onPreviewCover">
+    <image
+      class="cover-image"
+      src="{{item.coverImage || '/static/images/default-cover.png'}}"
+      mode="aspectFill"
+      lazy-load
+    />
+    <view class="card-type-tag">{{typeName}}</view>
+    <view class="card-status-tag status-tag {{statusClass}}">{{statusName}}</view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="card-body">
+    <view class="card-title text-ellipsis">{{item.title || '未命名邀请函'}}</view>
+    <view class="card-info">
+      <view class="info-item" wx:if="{{item.activityDate}}">
+        <image class="info-icon" src="/static/icons/calendar.png" />
+        <text class="info-text">{{item.activityDate}}</text>
+      </view>
+      <view class="info-item" wx:if="{{item.activityAddress}}">
+        <image class="info-icon" src="/static/icons/location.png" />
+        <text class="info-text text-ellipsis">{{item.activityAddress}}</text>
+      </view>
+    </view>
+
+    <!-- 统计数据 -->
+    <view class="card-stats" wx:if="{{item.status === 1}}">
+      <view class="stat-item">
+        <text class="stat-num">{{item.pv || 0}}</text>
+        <text class="stat-label">浏览</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{item.replyCount || 0}}</text>
+        <text class="stat-label">回复</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{item.attendCount || 0}}</text>
+        <text class="stat-label">出席</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{item.blessCount || 0}}</text>
+        <text class="stat-label">祝福</text>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="card-actions" wx:if="{{showAction}}">
+      <view class="action-btn" catchtap="onEdit" wx:if="{{item.status === 0}}">
+        <text>编辑</text>
+      </view>
+      <view class="action-btn action-primary" catchtap="onShare" wx:if="{{item.status === 1}}">
+        <text>分享</text>
+      </view>
+    </view>
+  </view>
+</view>

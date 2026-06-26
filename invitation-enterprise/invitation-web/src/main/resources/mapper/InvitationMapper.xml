@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.invitation.model.mapper.InvitationMapper">
+    <select id="selectByShortCode" resultType="com.invitation.model.entity.Invitation">
+        SELECT * FROM invitation WHERE short_code = #{shortCode} AND deleted = 0 LIMIT 1
+    </select>
+    <select id="selectByUserId" resultType="com.invitation.model.entity.Invitation">
+        SELECT * FROM invitation WHERE user_id = #{userId} AND deleted = 0 ORDER BY created_at DESC
+    </select>
+    <update id="incrementPv">
+        UPDATE invitation SET pv = pv + 1 WHERE id = #{id} AND deleted = 0
+    </update>
+    <update id="incrementUv">
+        UPDATE invitation SET uv = uv + 1 WHERE id = #{id} AND deleted = 0
+    </update>
+    <update id="incrementReplyCount">
+        UPDATE invitation SET reply_count = reply_count + 1 WHERE id = #{id} AND deleted = 0
+    </update>
+    <update id="incrementAttendCount">
+        UPDATE invitation SET attend_count = attend_count + 1 WHERE id = #{id} AND deleted = 0
+    </update>
+    <update id="incrementBlessCount">
+        UPDATE invitation SET bless_count = bless_count + 1 WHERE id = #{id} AND deleted = 0
+    </update>
+</mapper>

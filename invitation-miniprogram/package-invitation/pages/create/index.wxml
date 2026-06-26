@@ -1,0 +1,27 @@
+<view class="page-create">
+  <view class="page-title">选择活动类型</view>
+  <view class="page-subtitle">选择最符合您活动的类型</view>
+
+  <view class="type-grid">
+    <view
+      class="type-card {{selectedType === item.type ? 'type-selected' : ''}}"
+      wx:for="{{typeList}}"
+      wx:key="type"
+      data-type="{{item.type}}"
+      bindtap="onTypeSelect"
+    >
+      <view class="type-icon" style="background: {{item.color}}20">
+        <text>{{item.icon}}</text>
+      </view>
+      <text class="type-name">{{item.name}}</text>
+      <text class="type-desc">{{item.desc}}</text>
+      <view class="type-check" wx:if="{{selectedType === item.type}}">✓</view>
+    </view>
+  </view>
+
+  <view class="bottom-bar safe-bottom">
+    <button class="btn-primary btn-block" bindtap="onNext" disabled="{{!selectedType}}">
+      下一步：选择模板
+    </button>
+  </view>
+</view>

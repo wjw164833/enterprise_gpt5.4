@@ -1,0 +1,25 @@
+<view class="bless-card">
+  <!-- 头部：头像 + 昵称 + 时间 -->
+  <view class="bless-header">
+    <view class="bless-avatar avatar avatar-small">
+      <image src="{{item.guestAvatar || '/static/images/default-avatar.png'}}" mode="aspectFill" />
+    </view>
+    <view class="bless-user-info">
+      <text class="bless-name">{{item.guestName || '匿名用户'}}</text>
+      <text class="bless-time">{{relativeTime}}</text>
+    </view>
+    <view class="bless-delete" wx:if="{{showDelete}}" catchtap="onDelete">
+      <text class="delete-icon">×</text>
+    </view>
+  </view>
+
+  <!-- 留言内容 -->
+  <view class="bless-content">
+    <text class="bless-text">{{item.content}}</text>
+  </view>
+
+  <!-- 主题装饰标识 -->
+  <view class="bless-theme" wx:if="{{item.theme}}">
+    <text class="theme-icon">🎉</text>
+  </view>
+</view>

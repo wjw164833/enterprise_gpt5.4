@@ -1,0 +1,127 @@
+<view class="page-step-form">
+  <!-- 步骤条 -->
+  <view class="step-bar">
+    <view class="step-item step-done"><text>1</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-done"><text>2</text></view>
+    <view class="step-line step-line-done"></view>
+    <view class="step-item step-active"><text>3</text></view>
+    <view class="step-line"></view>
+    <view class="step-item"><text>4</text></view>
+    <view class="step-line"></view>
+    <view class="step-item"><text>5</text></view>
+  </view>
+  <view class="step-labels">
+    <text class="step-label">类型</text>
+    <text class="step-label">模板</text>
+    <text class="step-label step-label-active">表单</text>
+    <text class="step-label">内容</text>
+    <text class="step-label">设置</text>
+  </view>
+
+  <view class="form-container">
+    <!-- 封面图 -->
+    <view class="form-group">
+      <text class="form-label">封面图片</text>
+      <view class="cover-upload" bindtap="onUploadCover">
+        <image wx:if="{{form.coverImage}}" class="cover-preview" src="{{form.coverImage}}" mode="aspectFill" />
+        <view wx:else class="cover-placeholder">
+          <text class="cover-plus">+</text>
+          <text class="cover-hint">上传封面</text>
+        </view>
+        <view class="cover-loading" wx:if="{{coverUploading}}">
+          <text>上传中...</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标题 -->
+    <view class="form-group">
+      <text class="form-label form-label-required">邀请函标题</text>
+      <input class="form-input" placeholder="请输入标题"
+        value="{{form.title}}" data-field="title" bindinput="onInput" maxlength="50" />
+    </view>
+
+    <!-- 活动日期 -->
+    <view class="form-group">
+      <text class="form-label form-label-required">活动日期</text>
+      <view class="form-input-picker" bindtap="onDatePick">
+        <text class="{{form.activityDate ? '' : 'text-placeholder'}}">
+          {{form.activityDate || '请选择活动日期'}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 活动地点 -->
+    <view class="form-group">
+      <text class="form-label">活动地点</text>
+      <view class="location-input">
+        <input class="form-input" placeholder="请输入活动地点" style="flex:1"
+          value="{{form.activityAddress}}" data-field="activityAddress" bindinput="onInput" />
+        <view class="location-btn" bindtap="onChooseLocation">
+          <text>定位</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 背景音乐 -->
+    <view class="form-group">
+      <text class="form-label">背景音乐</text>
+      <view class="form-input-picker" bindtap="onShowMusicPicker">
+        <text class="{{selectedMusicName ? '' : 'text-placeholder'}}">
+          {{selectedMusicName || '选择背景音乐'}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 邀请语 + AI -->
+    <view class="form-group">
+      <view class="flex-between mb-8">
+        <text class="form-label">邀请语</text>
+        <view class="ai-btn {{aiGenerating ? 'ai-loading' : ''}}" bindtap="onAiGenerate">
+          <text>✨ AI 生成</text>
+        </view>
+      </view>
+      <textarea class="form-textarea" placeholder="写下您的邀请语，或使用AI智能生成"
+        value="{{form.aiGreeting}}" data-field="aiGreeting" bindinput="onInput" maxlength="500" />
+    </view>
+  </view>
+
+  <!-- 日期选择器 -->
+  <picker mode="date" value="{{datePickerValue}}" start="{{datePickerValue}}" bindchange="onDateChange" bindcancel="onDateCancel">
+    <view style="display:none"></view>
+  </picker>
+
+  <!-- 音乐选择弹窗 -->
+  <view class="modal-mask" wx:if="{{showMusicPicker}}" catchtap="onCloseMusicPicker">
+    <view class="modal-content animate-slideUp" catchtap="">
+      <view class="modal-header">
+        <text class="modal-title">选择背景音乐</text>
+        <text class="modal-close" catchtap="onCloseMusicPicker">×</text>
+      </view>
+      <scroll-view class="music-list" scroll-y>
+        <view
+          class="music-item {{form.musicId === item.id ? 'music-selected' : ''}}"
+          wx:for="{{musicList}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          data-name="{{item.name}}"
+          data-url="{{item.url}}"
+          bindtap="onSelectMusic"
+        >
+          <view class="music-info">
+            <text class="music-name">{{item.name}}</text>
+            <text class="music-artist">{{item.artist}}</text>
+          </view>
+          <view class="music-check" wx:if="{{form.musicId === item.id}}">✓</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom">
+    <button class="btn-secondary" bindtap="onPrev">上一步</button>
+    <button class="btn-primary" bindtap="onNext" style="flex:2">下一步</button>
+  </view>
+</view>

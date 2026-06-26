@@ -1,0 +1,84 @@
+.poster-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-container {
+  width: 640rpx;
+  background: #ffffff;
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  position: relative;
+}
+
+.poster-close {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.poster-close text {
+  font-size: 40rpx;
+  color: #999999;
+  line-height: 1;
+}
+
+.poster-title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 32rpx 32rpx 16rpx;
+}
+
+.poster-preview {
+  width: 100%;
+  min-height: 600rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 32rpx;
+  position: relative;
+}
+
+.poster-canvas {
+  position: fixed;
+  left: -9999px;
+  width: 600px;
+  height: 900px;
+}
+
+.poster-image {
+  width: 100%;
+  border-radius: var(--radius-medium);
+}
+
+.poster-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.poster-loading text {
+  font-size: 28rpx;
+  color: var(--text-placeholder);
+}
+
+.poster-actions {
+  padding: 24rpx 32rpx 48rpx;
+}

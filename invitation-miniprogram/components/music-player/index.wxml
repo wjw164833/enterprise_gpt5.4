@@ -1,0 +1,12 @@
+<view class="music-player {{show ? '' : 'music-player-hidden'}}" catchtap="togglePlay">
+  <view class="music-disc {{rotatingClass}}">
+    <image
+      class="music-icon"
+      src="/static/icons/music-note.png"
+      mode="aspectFit"
+    />
+  </view>
+  <view class="music-label" wx:if="{{name}}">
+    <text>{{name}}</text>
+  </view>
+</view>

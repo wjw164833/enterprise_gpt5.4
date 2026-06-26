@@ -1,0 +1,151 @@
+.page-chat {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 24rpx 32rpx;
+}
+
+.load-more {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.load-more-text {
+  font-size: 24rpx;
+  color: var(--primary-color);
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.msg-item {
+  margin-bottom: 24rpx;
+}
+
+.msg-system {
+  text-align: center;
+}
+
+.msg-system-content {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 8rpx 24rpx;
+  border-radius: var(--radius-round);
+  font-size: 22rpx;
+  color: var(--text-placeholder);
+}
+
+.msg-user-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.msg-avatar {
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.msg-body {
+  flex: 1;
+  max-width: 70%;
+}
+
+.msg-name {
+  font-size: 22rpx;
+  color: var(--text-placeholder);
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.msg-bubble {
+  background: #ffffff;
+  padding: 20rpx 24rpx;
+  border-radius: var(--radius-medium) var(--radius-medium) var(--radius-medium) 4rpx;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  line-height: 1.6;
+  word-break: break-all;
+  box-shadow: var(--shadow-light);
+}
+
+.msg-time {
+  font-size: 20rpx;
+  color: var(--text-disabled);
+  display: block;
+  margin-top: 4rpx;
+}
+
+/* 输入区 */
+.chat-input-bar {
+  background: #ffffff;
+  border-top: 1rpx solid var(--divider-color);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  gap: 12rpx;
+}
+
+.chat-input {
+  flex: 1;
+  height: 72rpx;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-round);
+  padding: 0 28rpx;
+  font-size: 28rpx;
+}
+
+.emoji-btn {
+  font-size: 36rpx;
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn {
+  background: var(--bg-secondary);
+  color: var(--text-placeholder);
+  font-size: 26rpx;
+  padding: 0 24rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border-radius: var(--radius-round);
+  flex-shrink: 0;
+}
+
+.send-active {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+/* 表情面板 */
+.emoji-panel {
+  border-top: 1rpx solid var(--divider-color);
+  padding: 16rpx 24rpx;
+}
+
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.emoji-item {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}

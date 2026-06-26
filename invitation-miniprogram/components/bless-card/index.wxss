@@ -1,0 +1,69 @@
+.bless-card {
+  background: #ffffff;
+  border-radius: var(--radius-medium);
+  padding: 24rpx 28rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.bless-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.bless-avatar {
+  margin-right: 16rpx;
+}
+
+.bless-user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bless-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.bless-time {
+  font-size: 22rpx;
+  color: var(--text-placeholder);
+  margin-top: 4rpx;
+}
+
+.bless-delete {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-icon {
+  font-size: 36rpx;
+  color: var(--text-placeholder);
+}
+
+.bless-content {
+  padding-left: 72rpx;
+}
+
+.bless-text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.bless-theme {
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+
+.theme-icon {
+  font-size: 32rpx;
+}

@@ -1,0 +1,60 @@
+<view class="page-chat" bindtap="onHideEmoji">
+  <!-- 消息列表 -->
+  <scroll-view class="chat-messages" scroll-y scroll-into-view="{{scrollIntoView}}" scroll-with-animation>
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{hasMore}}" bindtap="loadMessages">
+      <text class="load-more-text">加载更多消息</text>
+    </view>
+
+    <view class="message-list">
+      <view class="msg-item {{item.isSystem ? 'msg-system' : 'msg-user'}}" wx:for="{{messages}}" wx:key="id">
+        <!-- 系统消息 -->
+        <view class="msg-system-content" wx:if="{{item.isSystem}}">
+          <text>{{item.content}}</text>
+        </view>
+
+        <!-- 用户消息 -->
+        <view class="msg-user-wrapper" wx:else>
+          <view class="msg-avatar avatar avatar-small">
+            <image src="{{item.guestAvatar || '/static/images/default-avatar.png'}}" mode="aspectFill" />
+          </view>
+          <view class="msg-body">
+            <text class="msg-name">{{item.guestName || item.userName || '匿名'}}</text>
+            <view class="msg-bubble">
+              <text>{{item.content}}</text>
+            </view>
+            <text class="msg-time">{{item.formattedTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view id="msg-bottom"></view>
+  </scroll-view>
+
+  <!-- 输入区 -->
+  <view class="chat-input-bar safe-bottom">
+    <view class="input-wrapper">
+      <input
+        class="chat-input"
+        placeholder="发送消息..."
+        value="{{inputText}}"
+        bindinput="onInputChange"
+        confirm-type="send"
+        bindconfirm="onSend"
+        adjust-position="{{true}}"
+      />
+      <view class="emoji-btn" catchtap="onToggleEmoji">😊</view>
+      <view class="send-btn {{inputText.trim() ? 'send-active' : ''}}" catchtap="onSend">发送</view>
+    </view>
+
+    <!-- 表情面板 -->
+    <view class="emoji-panel" wx:if="{{showEmojiPanel}}" catchtap="">
+      <view class="emoji-grid">
+        <view class="emoji-item" wx:for="{{emojis}}" wx:key="*this"
+          data-emoji="{{item}}" catchtap="onEmojiTap">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

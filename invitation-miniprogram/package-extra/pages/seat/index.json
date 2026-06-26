@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "席位管理",
+  "usingComponents": {
+    "seat-map": "/components/seat-map/index"
+  }
+}

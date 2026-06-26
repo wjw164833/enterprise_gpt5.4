@@ -1,0 +1,52 @@
+.music-player {
+  position: fixed;
+  right: 32rpx;
+  bottom: 280rpx;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.music-player-hidden {
+  display: none;
+}
+
+.music-disc {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF6B6B, #E8534A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(232, 83, 74, 0.4);
+}
+
+.music-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.music-label {
+  margin-top: 8rpx;
+  max-width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-label text {
+  font-size: 20rpx;
+  color: var(--text-placeholder);
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotating {
+  animation: rotate 4s linear infinite;
+}

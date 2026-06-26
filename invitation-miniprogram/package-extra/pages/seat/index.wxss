@@ -1,0 +1,63 @@
+.page-seat {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+}
+
+.add-table-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  margin: 24rpx 32rpx;
+  padding: 28rpx;
+  border: 2rpx dashed var(--border-color);
+  background: #ffffff;
+}
+
+.add-icon {
+  font-size: 36rpx;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.add-text {
+  font-size: 28rpx;
+  color: var(--primary-color);
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+}
+
+.modal-content {
+  width: 100%;
+  background: #ffffff;
+  border-radius: var(--radius-large) var(--radius-large) 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+  border-bottom: 1rpx solid var(--divider-color);
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: var(--text-placeholder);
+}
+
+.modal-body { padding: 32rpx; }
+.modal-footer { padding: 16rpx 32rpx 32rpx; }

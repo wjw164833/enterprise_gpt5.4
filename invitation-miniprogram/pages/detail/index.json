@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "邀请函详情",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "share-poster": "/components/share-poster/index"
+  }
+}

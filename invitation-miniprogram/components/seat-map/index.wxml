@@ -1,0 +1,33 @@
+<view class="seat-map">
+  <view class="seat-table" wx:for="{{tables}}" wx:key="id"
+    data-table-id="{{item.id}}" bindtap="onTableTap">
+    <!-- 餐桌名称 -->
+    <view class="table-name">{{item.name}}</view>
+
+    <!-- 圆形餐桌布局 -->
+    <view class="table-circle">
+      <!-- 中心桌名 -->
+      <view class="table-center">
+        <text class="table-center-text">{{item.name}}</text>
+      </view>
+
+      <!-- 座位环绕 -->
+      <view class="seat-item {{selectedTableId === item.id && selectedSeatNo === seat.seatNo ? 'seat-selected' : ''}} {{seat.guestName ? 'seat-occupied' : 'seat-empty'}}"
+        wx:for="{{item.seats}}" wx:for-item="seat" wx:key="seatNo"
+        data-table-id="{{item.id}}" data-seat-no="{{seat.seatNo}}" data-guest-name="{{seat.guestName}}"
+        catchtap="onSeatTap"
+        style="transform: rotate({{360 / item.seats.length * index}}deg) translateX(140rpx) rotate({{-360 / item.seats.length * index}}deg);">
+        <view class="seat-avatar {{seat.guestName ? '' : 'seat-avatar-empty'}}">
+          <image wx:if="{{seat.guestName}}" src="{{seat.guestAvatar || '/static/images/default-avatar.png'}}" mode="aspectFill" />
+          <text wx:else class="seat-plus">+</text>
+        </view>
+        <text class="seat-name text-ellipsis">{{seat.guestName || seat.seatNo}}</text>
+      </view>
+    </view>
+
+    <!-- 座位数统计 -->
+    <view class="table-stats">
+      <text class="table-stat-text">已坐 {{item.assignedCount || 0}}/{{item.capacity}}人</text>
+    </view>
+  </view>
+</view>

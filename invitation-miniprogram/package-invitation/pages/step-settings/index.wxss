@@ -1,0 +1,63 @@
+.page-step-settings {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: 24rpx 32rpx;
+  padding-bottom: 180rpx;
+}
+
+.step-bar { display: flex; align-items: center; justify-content: center; padding: 24rpx 40rpx; }
+.step-item { width: 48rpx; height: 48rpx; border-radius: 50%; background: var(--bg-secondary); border: 2rpx solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 22rpx; color: var(--text-placeholder); }
+.step-active { background: var(--primary-color); border-color: var(--primary-color); color: #fff; }
+.step-done { background: var(--success-color); border-color: var(--success-color); color: #fff; }
+.step-line { flex: 1; height: 2rpx; background: var(--border-color); margin: 0 8rpx; }
+.step-line-done { background: var(--success-color); }
+.step-labels { display: flex; justify-content: space-between; padding: 8rpx 40rpx 24rpx; }
+.step-label { font-size: 20rpx; color: var(--text-placeholder); text-align: center; flex: 1; }
+.step-label-active { color: var(--primary-color); font-weight: 500; }
+
+.settings-container { margin-top: 16rpx; }
+
+.setting-card { margin-bottom: 20rpx; padding: 8rpx 32rpx; }
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 0;
+}
+
+.setting-left { flex: 1; margin-right: 24rpx; }
+
+.setting-name {
+  font-size: 30rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+  display: block;
+}
+
+.setting-desc {
+  font-size: 24rpx;
+  color: var(--text-placeholder);
+  margin-top: 4rpx;
+  display: block;
+}
+
+.setting-value {
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.setting-input {
+  width: 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-small);
+  padding: 8rpx;
+}
+
+.bottom-bar {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: flex; gap: 24rpx; padding: 20rpx 32rpx;
+  background: #ffffff; box-shadow: 0 -2rpx 16rpx rgba(0,0,0,0.06); z-index: 100;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.invitation.model.mapper.GuestReplyMapper">
+    <select id="selectByInvitationId" resultType="com.invitation.model.entity.GuestReply">
+        SELECT * FROM guest_reply WHERE invitation_id = #{invitationId} ORDER BY created_at DESC
+    </select>
+    <select id="countByInvitationId" resultType="int">
+        SELECT COUNT(*) FROM guest_reply WHERE invitation_id = #{invitationId}
+    </select>
+    <select id="countAttendByInvitationId" resultType="int">
+        SELECT COUNT(*) FROM guest_reply WHERE invitation_id = #{invitationId} AND reply_status = 1
+    </select>
+</mapper>

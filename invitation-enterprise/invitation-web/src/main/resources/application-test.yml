@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/invitation_enterprise?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: invitation
+    password: invitation_test_2026
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 10
+  redis:
+    host: redis
+    port: 6379
+    password: redis_test_2026
+    database: 0
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: invitation
+    password: invitation_test_2026
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+logging:
+  level:
+    com.invitation: INFO

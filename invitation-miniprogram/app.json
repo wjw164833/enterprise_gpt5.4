@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/index",
+    "pages/mine/index",
+    "pages/detail/index",
+    "pages/guest/index"
+  ],
+  "subpackages": [
+    {
+      "root": "package-invitation",
+      "name": "invitation",
+      "pages": [
+        "pages/create/index",
+        "pages/step-template/index",
+        "pages/step-form/index",
+        "pages/step-content/index",
+        "pages/step-settings/index",
+        "pages/step-preview/index"
+      ]
+    },
+    {
+      "root": "package-extra",
+      "name": "extra",
+      "pages": [
+        "pages/seat/index",
+        "pages/analytics/index",
+        "pages/chat/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "邀请函",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#E8534A",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "text": "邀请函",
+        "iconPath": "static/icons/list.png",
+        "selectedIconPath": "static/icons/list-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "static/icons/mine.png",
+        "selectedIconPath": "static/icons/mine-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "invitation-card": "/components/invitation-card/index",
+    "bless-card": "/components/bless-card/index",
+    "music-player": "/components/music-player/index",
+    "seat-map": "/components/seat-map/index",
+    "share-poster": "/components/share-poster/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于展示活动地址导航"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,61 @@
+<view class="page-step-preview">
+  <!-- 手机模拟器 -->
+  <view class="phone-frame">
+    <view class="phone-notch"></view>
+    <scroll-view class="phone-screen" scroll-y>
+      <view class="preview-content" wx:if="{{previewData}}">
+        <!-- 封面 -->
+        <view class="preview-cover">
+          <image src="{{previewData.coverImage || '/static/images/default-cover.png'}}" mode="aspectFill" />
+          <view class="preview-cover-overlay">
+            <text class="preview-type-badge">{{previewData.typeName}}</text>
+            <text class="preview-title">{{previewData.title}}</text>
+            <text class="preview-date">{{previewData.activityDate}}</text>
+          </view>
+        </view>
+
+        <!-- 邀请语 -->
+        <view class="preview-greeting" wx:if="{{previewData.aiGreeting}}">
+          <text>{{previewData.aiGreeting}}</text>
+        </view>
+
+        <!-- 活动信息 -->
+        <view class="preview-info">
+          <view class="preview-info-item" wx:if="{{previewData.activityAddress}}">
+            <text>📍 {{previewData.activityAddress}}</text>
+          </view>
+        </view>
+
+        <!-- 照片墙 -->
+        <view class="preview-photos" wx:if="{{previewData.photos.length > 0}}">
+          <text class="preview-section-title">照片墙</text>
+          <view class="preview-photo-grid">
+            <image wx:for="{{previewData.photos}}" wx:key="id"
+              src="{{item.url}}" mode="aspectFill" lazy-load />
+          </view>
+        </view>
+
+        <!-- 设置提示 -->
+        <view class="preview-settings">
+          <text wx:if="{{previewData.allowCompanion}}">✅ 允许携带同伴</text>
+          <text wx:if="{{previewData.publicBless}}">💌 公开留言</text>
+          <text wx:if="{{previewData.enableSeat}}">🪑 席位管理</text>
+        </view>
+      </view>
+
+      <!-- 空预览 -->
+      <view wx:else class="preview-empty">
+        <text>暂无预览数据</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar safe-bottom">
+    <button class="btn-secondary" bindtap="onPrev" disabled="{{submitting}}">返回编辑</button>
+    <button class="btn-primary-plain" bindtap="onSaveDraft" disabled="{{submitting}}">存草稿</button>
+    <button class="btn-primary" bindtap="onPublish" disabled="{{submitting}}" style="flex:2">
+      {{submitting ? '发布中...' : '发布'}}
+    </button>
+  </view>
+</view>
